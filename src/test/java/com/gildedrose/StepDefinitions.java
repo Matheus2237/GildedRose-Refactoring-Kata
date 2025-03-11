@@ -7,23 +7,23 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class StepDefinitions {
-    private Item[] items = new Item[1];
-    private GildedRose app;
 
-    @Given("The item as {string}")
-    public void initial_sellin_is_and_quality_is(String name) {
-        items[0] = new Item(name, 0, 0);
-        app = new GildedRose(items);
+    private final Item[] items = new Item[1];
+
+    @Given("The item is {string} with sellIn {int} and quality {int}")
+    public void theItemIsWithSellInAndQuality(String name, Integer sellIn, Integer quality) {
+        items[0] = new Item(name, sellIn, quality);
     }
 
     @When("I update the quality")
-    public void i_update_the_quality() {
+    public void iUpdateTheQuality() {
+        GildedRose app = new GildedRose(items);
         app.updateQuality();
     }
 
-    @Then("I should get item as {string}")
-    public void i_should_get_sellin_as_and_quality_as(String expected) {
-        assertEquals(expected, app.items[0].name);
+    @Then("The item should have sellIn {int} and quality {int}")
+    public void theItemShouldHaveSellInAndQuality(Integer sellIn, Integer quality) {
+        assertEquals(sellIn.intValue(), items[0].sellIn);
+        assertEquals(quality.intValue(), items[0].quality);
     }
 }
-
