@@ -58,6 +58,7 @@ class GildedRose {
                         items[i].quality = items[i].quality + 1;
                     }
                 }
+                items[i].sellIn = 0;
             }
         }
     }
