@@ -55,7 +55,7 @@ Feature: Gilded Rose Inventory Management
       # Conjured items: degrade in quality twice as fast as normal items
       # - Lose 2 quality per day before sell-in
       # - Lose 4 quality per day after sell-in reaches 0
-#      | Conjured Mana Cake                        | 3       | 6       | 2                 | 4                 |
-#      | Conjured Mana Cake                        | 2       | 8       | 1                 | 6                 |
-#      | Conjured Mana Cake                        | 1       | 5       | 0                 | 3                 |
-#      | Conjured Mana Cake                        | 0       | 6       | 0                 | 2                 |
+      | Conjured Mana Cake                        | 3       | 6       | 2                 | 4                 |
+      | Conjured Mana Cake                        | 2       | 8       | 1                 | 6                 |
+      | Conjured Mana Cake                        | 1       | 5       | 0                 | 3                 |
+      | Conjured Mana Cake                        | 0       | 6       | 0                 | 2                 |
