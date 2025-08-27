@@ -1,14 +1,19 @@
 package com.gildedrose;
 
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
-import org.junit.runner.RunWith;
+import org.junit.platform.suite.api.ConfigurationParameter;
+import org.junit.platform.suite.api.IncludeEngines;
+import org.junit.platform.suite.api.SelectClasspathResource;
+import org.junit.platform.suite.api.Suite;
 
-@RunWith(Cucumber.class)
-@CucumberOptions(
-        features = "src/test/resources/com/gildedrose",
-        glue = "com.gildedrose",
-        plugin = "pretty"
-)
+import static io.cucumber.core.options.Constants.FEATURES_PROPERTY_NAME;
+import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
+import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
+
+@Suite
+@IncludeEngines("cucumber")
+@SelectClasspathResource("com/gildedrose")
+@ConfigurationParameter(key = FEATURES_PROPERTY_NAME, value = "src/test/resources/com/gildedrose/GildedRose.feature")
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "com.gildedrose")
+@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
 public class RunCucumberTest {
 }
