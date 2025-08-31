@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Failed tests",
+    "messageRegex": ".*",
+    "matchedStatuses": ["failed"],
+    "color": "#ff4d4f"
+  },
+  {
+    "name": "Broken tests",
+    "messageRegex": ".*",
+    "matchedStatuses": ["broken"],
+    "color": "#fa8c16"
+  },
+  {
+    "name": "Passed tests",
+    "messageRegex": ".*",
+    "matchedStatuses": ["passed"],
+    "color": "#52c41a"
+  },
+  {
+    "name": "Skipped tests",
+    "messageRegex": ".*",
+    "matchedStatuses": ["skipped"],
+    "color": "#8c8c8c"
+  },
+  {
+    "name": "Unknown tests",
+    "messageRegex": ".*",
+    "matchedStatuses": ["unknown"],
+    "color": "#1890ff"
+  }
+]
