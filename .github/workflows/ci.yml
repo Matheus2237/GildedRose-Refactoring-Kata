@@ -26,25 +26,17 @@ jobs:
         run: mvn -B clean verify
         continue-on-error: true
 
-      - name: Setup Allure History
-        uses: actions/checkout@v4
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
-
       - name: Generate Allure Report
-        uses: simple-elf/allure-report-action@v1.11
-        if: always()
-        with:
-          allure_results: target/allure-results
-          allure_history: allure-history
+        run: |
+          mvn io.qameta.allure:allure-maven:report
+          rm -rf allure-report
+          cp -r target/site/allure-maven-plugin/* allure-report
 
       - name: Publish Allure Report on GitHub Pages
-        if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: allure-history
+          publish_dir: ./allure-report
+          user_name: 'GitHub Actions'
+          user_email: 'actions@github.com'
