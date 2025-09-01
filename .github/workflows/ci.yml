@@ -1,11 +1,9 @@
-name: CI - Build, Test & Allure Report
+name: CI - Build, Test & Deploy Allure Report
 
 on:
-  workflow_dispatch:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -22,21 +20,20 @@ jobs:
           java-version: 21
           cache: maven
 
-      - name: Tests build and execution with Maven
+      - name: Run tests with Maven
         run: mvn -B clean verify
         continue-on-error: true
 
       - name: Generate Allure Report
         run: |
           mvn io.qameta.allure:allure-maven:report
-          rm -rf allure-report
+          mkdir -p allure-report
           cp -r target/site/allure-maven-plugin/* allure-report
 
-      - name: Publish Allure Report on GitHub Pages
+      - name: Deploy Allure Report to GitHub Pages
+        if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: ./allure-report
-          user_name: 'GitHub Actions'
-          user_email: 'actions@github.com'
+          publish_dir: allure-report
