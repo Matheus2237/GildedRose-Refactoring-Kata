@@ -37,3 +37,9 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-report
+
+      - name: Add Allure Report link to Summary
+        if: always()
+        run: |
+          echo "## ✅ Allure Report" >> $GITHUB_STEP_SUMMARY
+          echo "[👉 Open Report](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/)" >> $GITHUB_STEP_SUMMARY
