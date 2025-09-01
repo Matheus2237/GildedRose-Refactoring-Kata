@@ -1,0 +1,3 @@
+Name: Elixir of the Mongoose
+SellIn: 1
+Quality: 3

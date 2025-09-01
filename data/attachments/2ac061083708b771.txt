@@ -1,0 +1,3 @@
+Name: Conjured Mana Cake
+SellIn: 0
+Quality: 6
