@@ -1,0 +1,3 @@
+Name: Sulfuras, Hand of Ragnaros
+SellIn: 0
+Quality: 80
