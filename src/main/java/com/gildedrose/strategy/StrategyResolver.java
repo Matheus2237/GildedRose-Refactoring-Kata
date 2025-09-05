@@ -25,4 +25,12 @@ public class StrategyResolver {
     public UpdateItemStrategy resolve(Item item) {
         return strategies.getOrDefault(item.name, new UpdateCommonItemStrategy());
     }
+
+    public static StrategyResolver getInstance() {
+        return Holder.INSTANCE;
+    }
+
+    private static class Holder {
+        private static final StrategyResolver INSTANCE = new StrategyResolver();
+    }
 }

@@ -3,15 +3,17 @@ package com.gildedrose;
 import com.gildedrose.strategy.*;
 
 class GildedRose {
-    Item[] items;
+
+    private final Item[] items;
+    private final StrategyResolver resolver;
 
     public GildedRose(Item[] items) {
         this.items = items;
+        this.resolver = StrategyResolver.getInstance();
     }
 
     public void updateQuality() {
         for (Item item : items) {
-            StrategyResolver resolver = new StrategyResolver();
             UpdateItemStrategy updateStrategy = resolver.resolve(item);
             updateStrategy.update(item);
         }
