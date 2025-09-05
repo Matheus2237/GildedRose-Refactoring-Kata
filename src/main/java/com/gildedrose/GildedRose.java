@@ -10,11 +10,10 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        // TODO: Enhance for
-        for (int i = 0; i < items.length; i++) {
+        for (Item item : items) {
             StrategyResolver resolver = new StrategyResolver();
-            UpdateItemStrategy updateStrategy = resolver.resolve(items[i]);
-            updateStrategy.update(items[i]);
+            UpdateItemStrategy updateStrategy = resolver.resolve(item);
+            updateStrategy.update(item);
         }
     }
 }
