@@ -2,8 +2,6 @@ package com.gildedrose.strategy;
 
 import com.gildedrose.Item;
 
-import static com.gildedrose.strategy.Util.updateSellIn;
-
 public class UpdateConjuredItemStrategy implements UpdateItemStrategy {
 
     @Override
