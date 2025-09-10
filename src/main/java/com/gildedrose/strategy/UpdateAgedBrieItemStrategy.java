@@ -8,13 +8,16 @@ public class UpdateAgedBrieItemStrategy implements UpdateItemStrategy {
     @Override
     public void update(Item item) {
         updateSellIn(item);
-        if (item.quality < 50) {
-            item.quality = item.quality + 1;
-        }
+        updateQuality(item);
+    }
+
+    private void updateQuality(Item item) {
+        item.quality++;
         if (item.sellIn == 0) {
-            if (item.quality < 50) {
-                item.quality = item.quality + 1;
-            }
+            item.quality++;
+        }
+        if (item.quality > 50) {
+            item.quality = 50;
         }
     }
 }
