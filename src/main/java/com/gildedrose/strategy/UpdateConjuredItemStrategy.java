@@ -2,21 +2,13 @@ package com.gildedrose.strategy;
 
 import com.gildedrose.Item;
 
+import static java.lang.Math.max;
+
 public class UpdateConjuredItemStrategy implements UpdateItemStrategy {
 
-    @Override
-    public void update(Item item) {
-        updateSellIn(item);
-        updateQuality(item);
-    }
-
-    private void updateQuality(Item item) {
-        item.quality -= 2;
-        if (item.sellIn == 0) {
-            item.quality -= 2;
-        }
-        if (item.quality < 0) {
-            item.quality = 0;
-        }
+    public void updateQuality(Item item) {
+        item.quality = item.sellIn == 0
+            ? max(0, item.quality - 4)
+            : max(0, item.quality - 2);
     }
 }

@@ -2,31 +2,20 @@ package com.gildedrose.strategy;
 
 import com.gildedrose.Item;
 
+import static java.lang.Math.min;
+
 public class UpdatePassessItemStrategy implements UpdateItemStrategy {
 
-    @Override
-    public void update(Item item) {
-        updateSellIn(item);
-        updateQuality(item);
-    }
-
-    private void updateQuality(Item item) {
-        item.quality++;
-
-        if (item.sellIn < 11) {
-            item.quality++;
-        }
-
-        if (item.sellIn < 6) {
-            item.quality++;
-        }
-
-        if (item.quality > 50) {
-            item.quality = 50;
-        }
-
+    public void updateQuality(Item item) {
         if (item.sellIn == 0) {
             item.quality = 0;
+            return;
         }
+
+        int increment = 1;
+        if (item.sellIn < 11) increment++;
+        if (item.sellIn < 6) increment++;
+
+        item.quality = min(50, item.quality + increment);
     }
 }

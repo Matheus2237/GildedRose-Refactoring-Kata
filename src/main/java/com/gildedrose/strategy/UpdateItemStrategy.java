@@ -4,7 +4,10 @@ import com.gildedrose.Item;
 
 public interface UpdateItemStrategy {
 
-    void update(Item item);
+    default void update(Item item) {
+        updateSellIn(item);
+        updateQuality(item);
+    }
 
     default void updateSellIn(Item item) {
         item.sellIn = item.sellIn - 1;
@@ -12,4 +15,6 @@ public interface UpdateItemStrategy {
             item.sellIn = 0;
         }
     }
+
+    void updateQuality(Item item);
 }

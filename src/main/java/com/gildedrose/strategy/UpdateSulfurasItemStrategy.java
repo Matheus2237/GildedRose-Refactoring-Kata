@@ -5,7 +5,7 @@ import com.gildedrose.Item;
 public class UpdateSulfurasItemStrategy implements UpdateItemStrategy {
 
     @Override
-    public void update(Item item) {
-        updateSellIn(item);
+    public void updateQuality(Item item) {
+        /// Empty because Sulfuras never changes its quality
     }
 }
